@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Information</title>
+    <title>Route Similarity</title>
 </head>
+
 <body>
-    Product Information
+    Route Similarity
     <br>
-    <form action='/product' method="post">
-        <label for="product">Enter product:</label><br>
-        <input type="text" id="product" name="product"><br>
-        <input type="submit" value="Submit">
-      </form>
-      <br>
-      {% if product %}
-      Product Name: {{ product.name }} <br>
-      Product Price: {{ product.price }} <br>
-  {% endif %}
+    <form action="/get-similarity" method="POST">
+
+        <input type="text" name="route1" id="r1">
+        <input type="text" name="route2" id="r2">
+        <input type="submit" value="check_similarity">
+
+    </form>
+
+    <br>
+    {% if similarity_score %}
+    Similarity Score: {{ similarity_score.similarity_score }} <br>
+    {% endif %}
 
 </body>
+
 </html>

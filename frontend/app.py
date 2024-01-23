@@ -11,14 +11,17 @@ def start():
 
     return render_template('index.html')
 
-@app.route('/product', methods=[ 'POST', 'GET'])
-def product():
+@app.route('/get-similarity', methods=[ 'POST', 'GET'])
+def get_similarity():
 
-    product = request.values.get('product')
+    route1 = request.values.get('route1')
+    route2 = request.values.get('route2')
 
-    product = pr_client.process_get(f'price?product={product}')
+    similarity_score = pr_client.process_get(f'similarity?route1={route1}&route2={route2}')
 
-    return render_template('index.html', product=product.json())
+
+
+    return render_template('index.html', similarity_score=similarity_score.json())
 
 
 if __name__== "__main__":
